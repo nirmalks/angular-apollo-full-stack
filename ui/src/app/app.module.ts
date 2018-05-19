@@ -6,10 +6,15 @@ import { HttpLinkModule , HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import { AppComponent } from './app.component';
+import { CricketerListComponent } from './cricketer-list/cricketer-list.component';
+import { CricketerItemComponent } from './cricketer-item/cricketer-item.component';
+import { CricketerService } from './cricketer.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CricketerListComponent,
+    CricketerItemComponent
   ],
   imports: [
     BrowserModule,
@@ -17,7 +22,7 @@ import { AppComponent } from './app.component';
     HttpLinkModule,
     ApolloModule
   ],
-  providers: [],
+  providers: [CricketerService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
