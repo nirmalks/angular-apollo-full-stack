@@ -9,7 +9,6 @@ export class CricketerService {
   constructor(private apollo: Apollo) {}
 
   getAllCricketers(searchTerm: String) {
-    console.log(searchTerm);
     return this.apollo.watchQuery<Query>({
         pollInterval: 1000,
         query: gql`
