@@ -9,18 +9,22 @@ import { AppComponent } from './app.component';
 import { CricketerListComponent } from './cricketer-list/cricketer-list.component';
 import { CricketerItemComponent } from './cricketer-item/cricketer-item.component';
 import { CricketerService } from './cricketer.service';
-
+import { RouterModule, Routes } from '@angular/router';
+import { appRoutes } from './app.routing';
+import { CricketerDetailComponent } from './cricketer-detail/cricketer-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
     CricketerListComponent,
-    CricketerItemComponent
+    CricketerItemComponent,
+    CricketerDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     HttpLinkModule,
-    ApolloModule
+    ApolloModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [CricketerService],
   bootstrap: [AppComponent]

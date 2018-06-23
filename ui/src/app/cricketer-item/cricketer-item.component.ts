@@ -12,6 +12,7 @@ import { OnChanges } from '@angular/core';
 })
 export class CricketerItemComponent implements OnInit {
   @Input() cricketer: Cricketer;
+  public mainPath = '/cricketer-details';
 
   constructor(private cricketerService: CricketerService) { }
 

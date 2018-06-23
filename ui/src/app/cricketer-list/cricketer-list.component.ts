@@ -1,27 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { CricketerService } from '../cricketer.service';
 import { Cricketer } from '../types';
 import { Observable } from 'rxjs';
 import { Input } from '@angular/core';
 import { OnChanges } from '@angular/core';
+import { ViewChild } from '@angular/core';
+import { AppComponent } from '../app.component';
+import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { forwardRef } from '@angular/core';
 @Component({
   selector: 'app-cricketer-list',
   templateUrl: './cricketer-list.component.html',
   styleUrls: ['./cricketer-list.component.css']
 })
 export class CricketerListComponent implements OnInit , OnChanges {
-  @Input() searchTerm: String;
+  searchTerm: String = '';
   cricketersList: Observable<Cricketer[]>;
 
-  constructor(private cricketerService: CricketerService) {
+  constructor(private cricketerService: CricketerService ) {
 
   }
 
   ngOnInit() {
-    this.cricketersList = this.cricketerService.getAllCricketers(this.searchTerm);
+    this.cricketerService.getSearchTerm().subscribe(input => {
+      console.log('input inside 'input)
+      this.searchTerm = input;
+      console.log(this.searchTerm)
+      this.cricketersList = this.cricketerService.getAllCricketers(this.searchTerm);
+    });
+
   }
 
-  ngOnChanges(): void {
+  ngOnChanges() {
     this.cricketersList = this.cricketerService.getAllCricketers(this.searchTerm);
   }
 

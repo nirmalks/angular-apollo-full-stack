@@ -4,13 +4,15 @@ import gql from 'graphql-tag';
 import { map , filter } from 'rxjs/operators';
 
 import { Query , Cricketer } from './types';
+import { BehaviorSubject } from 'rxjs';
 @Injectable()
 export class CricketerService {
   constructor(private apollo: Apollo) {}
+  private searchInput: BehaviorSubject<String> = new BehaviorSubject<String>('');
 
   getAllCricketers(searchTerm: String) {
     return this.apollo.watchQuery<Query>({
-        pollInterval: 1000,
+        pollInterval: 10000,
         query: gql`
         query allCricketers($searchTerm: String){
           allCricketers(searchTerm: $searchTerm){
@@ -84,5 +86,13 @@ export class CricketerService {
         age: age
       }
     });
+  }
+
+  updateSearchTerm(searchInput: String) {
+    this.searchInput.next(searchInput);
+  }
+
+  getSearchTerm() {
+    return this.searchInput.asObservable();
   }
 }

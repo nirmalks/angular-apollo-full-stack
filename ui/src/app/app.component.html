@@ -2,8 +2,8 @@
   <nav class="navbar navbar-dark bg-primary">
     <a href="#" class="navbar-brand">Favorite Cricketers</a>
     <div class="form-inline my-2 my-lg-0">
-      <input type="search" class="form-control mr-sm-2" placeholder="search" aria-label="search" #searchInput>
+      <input type="search" (keyup)="getSearchInput($event)" class="form-control mr-sm-2" placeholder="search" aria-label="search"t>
     </div>
   </nav>
-  <app-cricketer-list [searchTerm]="searchInput.value"></app-cricketer-list>
+  <router-outlet></router-outlet>
 </div>
