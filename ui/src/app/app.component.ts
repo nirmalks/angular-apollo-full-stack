@@ -7,7 +7,7 @@ import { CricketerListComponent } from './cricketer-list/cricketer-list.componen
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit{
+export class AppComponent {
   searchInput: String = '';
 
   constructor(private cricketerService: CricketerService) {}

@@ -7,4 +7,5 @@ export type Cricketer =  {
 
 export type Query = {
   allCricketers: Cricketer[];
-}
+  getCricketer: Cricketer;
+};

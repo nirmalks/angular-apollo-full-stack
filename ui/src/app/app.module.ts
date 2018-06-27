@@ -12,6 +12,8 @@ import { CricketerService } from './cricketer.service';
 import { RouterModule, Routes } from '@angular/router';
 import { appRoutes } from './app.routing';
 import { CricketerDetailComponent } from './cricketer-detail/cricketer-detail.component';
+import { CricketerResolver } from './cricketer-detail-resolver';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,7 @@ import { CricketerDetailComponent } from './cricketer-detail/cricketer-detail.co
     ApolloModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [CricketerService],
+  providers: [CricketerService, CricketerResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -28,27 +28,30 @@ export class CricketerService {
         }
       })
       .valueChanges.pipe(map(result => {
-        console.log(result);
         return result.data.allCricketers;
       }));
   }
 
-  getCricketer(id: Number) {
+  getCricketer(id: String) {
     return this.apollo
       .watchQuery<Query>({
-        pollInterval: 500,
         query: gql`
-          query getCricketer(id: $id){
-            name
-            id
-            country
+          query getCricketer($id: String!){
+            getCricketer(id: $id) {
+              name
+              id
+              country
+            }
           }
       `,
         variables: {
           id: id
         }
       })
-      .valueChanges.pipe(map(result => result.data.allCricketers));
+      .valueChanges.pipe(map(result => {
+        console.log(result.data.getCricketer);
+        return result.data.getCricketer;
+      }));
   }
 
   addCricketer(name: String, country: String, age: Number) {

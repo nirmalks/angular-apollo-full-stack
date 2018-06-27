@@ -23,12 +23,9 @@ export class CricketerListComponent implements OnInit , OnChanges {
 
   ngOnInit() {
     this.cricketerService.getSearchTerm().subscribe(input => {
-      console.log('input inside 'input)
       this.searchTerm = input;
-      console.log(this.searchTerm)
       this.cricketersList = this.cricketerService.getAllCricketers(this.searchTerm);
     });
-
   }
 
   ngOnChanges() {
