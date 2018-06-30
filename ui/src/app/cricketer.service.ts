@@ -5,6 +5,7 @@ import { map , filter } from 'rxjs/operators';
 
 import { Query , Cricketer } from './types';
 import { BehaviorSubject } from 'rxjs';
+import { Observable } from 'apollo-link';
 @Injectable()
 export class CricketerService {
   constructor(private apollo: Apollo) {}
@@ -34,7 +35,7 @@ export class CricketerService {
 
   getCricketer(id: String) {
     return this.apollo
-      .watchQuery<Query>({
+      .query<Query>({
         query: gql`
           query getCricketer($id: String!){
             getCricketer(id: $id) {
@@ -47,11 +48,7 @@ export class CricketerService {
         variables: {
           id: id
         }
-      })
-      .valueChanges.pipe(map(result => {
-        console.log(result.data.getCricketer);
-        return result.data.getCricketer;
-      }));
+      });
   }
 
   addCricketer(name: String, country: String, age: Number) {

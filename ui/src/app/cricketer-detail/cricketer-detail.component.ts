@@ -11,8 +11,7 @@ export class CricketerDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.cricketer = this.route.snapshot.data.cricketer;
-    console.log(this.cricketer)
+    this.cricketer = this.route.snapshot.data.cricketer.data.getCricketer;
   }
 
 }

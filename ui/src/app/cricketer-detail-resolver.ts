@@ -12,8 +12,7 @@ export class CricketerResolver implements Resolve<any> {
 
   }
 
-  resolve(route: ActivatedRouteSnapshot){
-    console.log(this.cricketerService.getCricketer(route.paramMap.get('id')));
-    return this.cricketerService.getCricketer(route.paramMap.get('id')).subscribe(data => console.log(data));
+  resolve(route: ActivatedRouteSnapshot) {
+    return this.cricketerService.getCricketer(route.paramMap.get('id'));
   }
 }
